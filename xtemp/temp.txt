@@ -1,0 +1,24 @@
+app.get("/test",async(req,res)=>{
+    let sample = new Listing({
+        title:"My new Villa",
+        description:"By the beach",
+        price : 1200,
+        location:'Calangute, Goa',
+        country : 'India'
+    });
+
+    await sample.save();
+    console.log("sample saved");
+    res.send("Working Successfully");
+})
+
+
+app.get("/demouser",async(req,res)=>{
+    let fakeUser = new User({
+        email : "student@gmail.com",
+        username : "delta-student"
+    });
+
+    let resgisterUser  = await User.register(fakeUser,"helloworld");
+    res.send(resgisterUser);
+})
